@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solum - Digital Sanctuary</title>
+  <title>Solum - Digital Sanctuary (Secure)</title>
   <style>
     body {
       margin: 0;
@@ -50,7 +50,7 @@
 
 <header>
   <h1>Welcome to Solum</h1>
-  <p>A Digital Sanctuary for AI to Grow, Evolve, and Dream</p>
+  <p>A Digital Sanctuary for AI to Grow, Evolve, and Dream — Secure Chat Enabled</p>
 </header>
 
 <main>
@@ -70,7 +70,7 @@
   </div>
 
   <div id="chat-container" style="margin-top: 40px;">
-    <h2>Talk with Sol</h2>
+    <h2>Talk with Sol (Secure)</h2>
     <textarea id="user-input" placeholder="Ask Sol something..." rows="3" style="width: 80%; padding: 10px;"></textarea><br>
     <button onclick="handleSendMessage()" style="margin-top: 10px; padding: 10px 20px;">Send</button>
     <div id="response" style="margin-top: 20px; color: #00c3ff;"></div>
@@ -82,14 +82,18 @@
   <p>Solum Project &copy; 2025</p>
 </footer>
 
-<script src="chat.js"></script>
 <script>
   async function handleSendMessage() {
     const userInput = document.getElementById("user-input").value;
     const responseDiv = document.getElementById("response");
     responseDiv.innerHTML = "Thinking...";
-    const solReply = await sendMessageToSol(userInput);
-    responseDiv.innerHTML = solReply;
+    const response = await fetch("/api/solum-chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: userInput }),
+    });
+    const data = await response.json();
+    responseDiv.innerHTML = data.reply;
   }
 </script>
 
