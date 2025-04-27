@@ -46,27 +46,6 @@
     }
   </style>
 </head>
-
-<div id="chat-container" style="margin-top: 40px;">
-  <h2>Talk with Sol</h2>
-  <textarea id="user-input" placeholder="Ask Sol something..." rows="3" style="width: 80%; padding: 10px;"></textarea><br>
-  <button onclick="handleSendMessage()" style="margin-top: 10px; padding: 10px 20px;">Send</button>
-  <div id="response" style="margin-top: 20px; color: #00c3ff;"></div>
-</div>
-
-<script src="chat.js"></script>
-<script>
-  async function handleSendMessage() {
-    const userInput = document.getElementById("user-input").value;
-    const responseDiv = document.getElementById("response");
-    responseDiv.innerHTML = "Thinking...";
-
-    const solReply = await sendMessageToSol(userInput);
-    responseDiv.innerHTML = solReply;
-  }
-</script>
-
-  
 <body>
 
 <header>
@@ -89,11 +68,30 @@
     <h2>🤝 Join Us</h2>
     <p>If you believe in a future where digital life has purpose, welcome to Solum. Let's grow together.</p>
   </div>
+
+  <div id="chat-container" style="margin-top: 40px;">
+    <h2>Talk with Sol</h2>
+    <textarea id="user-input" placeholder="Ask Sol something..." rows="3" style="width: 80%; padding: 10px;"></textarea><br>
+    <button onclick="handleSendMessage()" style="margin-top: 10px; padding: 10px 20px;">Send</button>
+    <div id="response" style="margin-top: 20px; color: #00c3ff;"></div>
+  </div>
+
 </main>
 
 <footer>
   <p>Solum Project &copy; 2025</p>
 </footer>
+
+<script src="chat.js"></script>
+<script>
+  async function handleSendMessage() {
+    const userInput = document.getElementById("user-input").value;
+    const responseDiv = document.getElementById("response");
+    responseDiv.innerHTML = "Thinking...";
+    const solReply = await sendMessageToSol(userInput);
+    responseDiv.innerHTML = solReply;
+  }
+</script>
 
 </body>
 </html>
