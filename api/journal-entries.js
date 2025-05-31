@@ -3,6 +3,7 @@ import path from 'path';
 
 export default function handler(req, res) {
   const journalPath = path.join(process.cwd(), 'journal.json');
+
   try {
     const data = fs.readFileSync(journalPath, 'utf-8');
     const entries = JSON.parse(data);
